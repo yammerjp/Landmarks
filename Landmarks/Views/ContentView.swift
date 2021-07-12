@@ -10,13 +10,10 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         VStack(alignment: .leading) {
-            MapView()
-                .ignoresSafeArea(edges: .top)
-                .frame(height:300)
-            
+
             HStack {
                 Spacer()
-                CircleImage()
+                CircleImage(image: Image("turtlerock"))
                     .offset(y:-130)
                     .padding(.bottom, -130)
                 Spacer()
