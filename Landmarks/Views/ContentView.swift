@@ -8,8 +8,33 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var isShowingLogo: Bool = true
+    @State var opacity: Double = 0
+    
     var body: some View {
-        LandmarkList()
+
+        if isShowingLogo {
+            Badge()
+                .onAppear() {
+                    /*
+                    withAnimation(.linear(duration: 2.0)) {
+                        self.isShowingLogo = false
+                    }
+ */
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                        withAnimation(.linear(duration: 1.0)) {
+                            self.isShowingLogo = false
+                        }
+                    }
+                 }
+        } else {
+            LandmarkList()
+                .onAppear{
+                    withAnimation(.linear(duration: 0.3)) {
+                        self.opacity = 1.0
+                    }
+                }
+        }
     }
 }
 
